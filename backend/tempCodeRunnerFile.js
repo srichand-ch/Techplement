@@ -1,0 +1,2 @@
+
+    // quotesCache.forEach(element => {
