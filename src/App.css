@@ -49,7 +49,6 @@
   /* background-color: #8b00ad; */
   padding-top: 10px;
   padding-bottom: 10px;
-  border-radius: 5px;
 }
 
 .quote-container .quote{
@@ -105,4 +104,18 @@ header{
   padding-bottom: 10px;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: bold;
+}
+
+
+@media screen and (max-width: 768px) {
+  .container{
+    background-color: #be2de2;
+    border-radius: 5px;
+    display:flexbox;
+    height: auto;
+  }
+
+  .quote-container .author{
+    text-align: center;
+  }
 }
