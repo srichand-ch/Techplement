@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './QuoteList.js';
 import { config } from './Constants';
+import Footer from "./Footer";
 
 import React, { useState, useEffect } from 'react';   
 import QuoteList from './QuoteList.js';
@@ -23,9 +24,7 @@ function App() {
 
   const fetchQuoteOfTheDay = async () => {
     try {
-      // const response = await fetch('http://localhost:5000/api/quote');
-      const response = await fetch('https://only-backend-1.onrender.com/api/quote');
-      // const response = await fetch('https://techplement-orfj.onrender.com/api/quote');
+      const response = await fetch('http://localhost:5000/api/quote');
       // const response = await fetch('${config.url}/quote');
       const data = await response.json();
       console.log('Quote of the day: ', data);
@@ -38,9 +37,7 @@ function App() {
 
   const searchQuotes = async () => {
     try {
-      // const response = await fetch(`http://localhost:5000/api/quotes/${searchTerm}`);
-      const response = await fetch(`https://only-backend-1.onrender.com/api/quotes/${searchTerm}`);
-      // const response = await fetch(`https://techplement-orfj.onrender.com/api/quotes/${searchTerm}`);
+      const response = await fetch(`http://localhost:5000/api/quotes/${searchTerm}`);
       const data = await response.json();
       console.log('Response data:', data);
       setSearchResults(data);
@@ -81,16 +78,35 @@ function App() {
         </div>
       </div>
     
-      <div>
+      {/* <div>
       {searchResults.length > 0 ? (
         <div>
-          <h2 className="text-center">Quotes by {searchTerm}:</h2>
+          <h2 className="text-center" >Quotes by {searchTerm}:</h2>
           <QuoteList quotes={searchResults} />
         </div>
       ) : (
         <div className="text-center mt-4">No quotes found for the author "{searchTerm}"</div>
       )}
+      </div> */}
+
+      <div>
+        {searchTerm && searchResults.length > 0 ? (
+          <div>
+            {/* <h2 className="text-center">Quotes by {searchTerm}:</h2> */}
+            <QuoteList quotes={searchResults} />
+          </div>
+        ) : (
+          <div className="text-center mt-4">
+            {searchTerm ? (
+              "No quotes found for the author \"" + searchTerm + "\""
+            ) : (
+              "Type author name to search for quotes"
+            )}
+          </div>
+        )}
       </div>
+      
+      <Footer />
     </div>
   );
 }
