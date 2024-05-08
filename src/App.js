@@ -24,7 +24,8 @@ function App() {
 
   const fetchQuoteOfTheDay = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/quote');
+      // const response = await fetch('http://localhost:5000/api/quote');
+      const response = await fetch('https://only-backend-1.onrender.com/api/quote');
       // const response = await fetch('${config.url}/quote');
       const data = await response.json();
       console.log('Quote of the day: ', data);
@@ -37,7 +38,8 @@ function App() {
 
   const searchQuotes = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/quotes/${searchTerm}`);
+      // const response = await fetch(`http://localhost:5000/api/quotes/${searchTerm}`);
+      const response = await fetch(`https://only-backend-1.onrender.com/api/quotes/${searchTerm}`);
       const data = await response.json();
       console.log('Response data:', data);
       setSearchResults(data);
