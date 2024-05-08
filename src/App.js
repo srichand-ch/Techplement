@@ -2,7 +2,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './QuoteList.js';
-import { config } from './Constants';
 import Footer from "./Footer";
 
 import React, { useState, useEffect } from 'react';   
@@ -26,7 +25,6 @@ function App() {
     try {
       // const response = await fetch('http://localhost:5000/api/quote');
       const response = await fetch('https://only-backend-1.onrender.com/api/quote');
-      // const response = await fetch('${config.url}/quote');
       const data = await response.json();
       console.log('Quote of the day: ', data);
       setQuote(data.q);
